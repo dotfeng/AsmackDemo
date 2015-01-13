@@ -8,4 +8,8 @@ More useful method at net.fengg.asmack.demo.util.CommonMethod
 
 Compiled asmack.jar
 
+API include
+
+![image](https://raw.githubusercontent.com/dotfeng/AsmackDemo/master/screenshots1.png)
+
 ![image](https://raw.githubusercontent.com/dotfeng/AsmackDemo/master/screenshots.png)
