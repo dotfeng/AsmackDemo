@@ -103,7 +103,8 @@ public class FriendsActivity extends BaseActivity implements OnClickListener {
 
 		findViewById(R.id.btn_search).setOnClickListener(this);
 		findViewById(R.id.btn_newgroup).setOnClickListener(this);
-
+		findViewById(R.id.btn_add_friend).setOnClickListener(this);
+		
 		ListView frilistview = (ListView) findViewById(R.id.lv_friends);
 		adap = new FriendsAdap(this, rosterEntries);
 		frilistview.setAdapter(adap);

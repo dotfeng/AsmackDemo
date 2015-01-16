@@ -254,7 +254,7 @@ public class CommonMethod {
 	/**
 	 * 更改用户状态
 	 */
-	public void setPresence(int code) {
+	public static void setPresence(int code) {
 		Presence presence;
 		switch (code) {
 		case 0:
@@ -361,8 +361,11 @@ public class CommonMethod {
 	public static boolean addGroupFriend(String friend, String group) {
 		try {
 			Roster roster = ConnectionTool.getConnection().getRoster();
-			roster.createEntry(friend + "@" + ConnectionTool.getIp(), friend,
-					new String[] { group });
+			roster.createEntry(friend.contains("@")? friend : getUserId(friend), friend,
+					null == group? null : new String[] { group });
+			Presence subscribed = new Presence(Presence.Type.subscribed);
+			subscribed.setTo(getUserId(friend));
+			ConnectionTool.getConnection().sendPacket(subscribed);
 			return true;
 		} catch (XMPPException e) {
 			e.printStackTrace();
@@ -371,15 +374,7 @@ public class CommonMethod {
 	}
 
 	public static boolean addFriend(String friend) {
-		try {
-			Roster roster = ConnectionTool.getConnection().getRoster();
-			roster.createEntry(friend + "@" + ConnectionTool.getIp(), friend,
-					null);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
+		return addGroupFriend(friend, null);
 	}
 
 	public static boolean removeUser(String userName) {
@@ -977,5 +972,9 @@ public class CommonMethod {
 			e.printStackTrace();
 		}
 		return shOnLineState;
+	}
+	
+	static String getUserId(String name) {
+		return name + "@" + ConnectionTool.getIp();
 	}
 }
