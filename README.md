@@ -10,6 +10,6 @@ Compiled asmack.jar https://github.com/dotfeng/AsmackDemo/raw/master/asmack.jar
 
 API include
 
-![image](https://raw.githubusercontent.com/dotfeng/AsmackDemo/master/screenshots1.png)
+![image](screenshots1.png)
 
-![image](https://raw.githubusercontent.com/dotfeng/AsmackDemo/master/screenshots.png)
+![image](screenshots.png)
